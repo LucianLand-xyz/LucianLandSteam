@@ -207,6 +207,13 @@
             return;
         }
 
+        const logEntry = document.createElement("div");
+            logEntry.className = "log-entry";
+            logEntry.style.color = "green"
+            logEntry.textContent = `[ Information ] Pushing you to website: ` + newURL;
+            logContainer.appendChild(logEntry);
+            scrollLogToBottom();
+
         const encodedText = encodeURIComponent(inputText);
         const baseURL = "https://uploads.online-fix.me:2053/uploads/";
         const suffix = "/Fix%20Repair/";
