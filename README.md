@@ -1,2 +1,1 @@
-# LucianLandSteam
- Easy to use Lua manafest generator
+dont mind my unorganized shitty code 😳

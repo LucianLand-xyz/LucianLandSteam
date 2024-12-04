@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/sweetalert.min.css">
+    <script src="js/sweetalert.min.js"></script>
+    <script async="" src="js/adsbygoogle.js" crossorigin="anonymous"></script>
+    <title>LucianLand - Steam</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
+    <style>
+        /* Styles from the first CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background-color: #333333;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #555555;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #333333;
+            color: #ffffff;
+        }
+        button {
+            padding: 11px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .note {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        .log-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #3b3d4e93;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 100%;
+            max-width: 600px;
+            min-height: 300px;
+            box-sizing: border-box;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .log-entry {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #ffffff;
+        }
+        .sweet-alert {
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+        .sweet-alert h2, .sweet-alert p {
+            color: #ffffff;
+        }
+        .sweet-alert .sa-button-container .confirm {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+            border: none;
+            box-shadow: none;
+        }
+        .sweet-alert .sa-button-container .confirm:hover {
+            background-color: #444444 !important;
+        }
+        .sweet-alert .sa-button-container .cancel {
+            background-color: #555555 !important;
+            color: #ffffff !important;
+            border: none;
+            box-shadow: none;
+        }
+        .sweet-alert .sa-button-container .cancel:hover {
+            background-color: #666666 !important;
+        }
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2c2c2c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #5a5a5a;
+            border-radius: 6px;
+            border: 3px solid #2c2c2c;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #777;
+        }
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #5a5a5a #2c2c2c;
+        }
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 31.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="header_links">
+            <ul class="nav_links">
+                <li class="nav_link"><a href="https://lucianland.xyz/downloads.html">Downloads</a></li>
+                <li class="nav_link"><a href="https://lucianland.xyz/qna.html">Q&A</a></li>
+                <li class="nav_link"><a href="https://lucianland.xyz/onlinefix.html">Q&A</a></li>
+            </ul>
+        </div> 
+    </nav>
+</header>
+
+<section class="main">
+    <div class="container">
+        <h2>Enter Name to Redirect</h2>
+        <input type="text" id="nameInput" placeholder="Enter name here">
+        <button onclick="redirectToSite()">Go</button>
+        <div class="note">
+            You have to put the game name, not the depot id.
+        </div>
+        <div id="log-container" class="log-container"></div>
+    </div>
+</section>
+
+<script>
+    function showSwal() {
+        swal({
+            title: 'WARNING',
+            html: true,
+            text: 
+                '<span style="color: white;">THIS IS IN ALPHA AND IS USING MY OWN API I MADE FROM <a href="https://online-fix.me">Online-fix.me</a> AND IS NOT INTENDED FOR PUBLIC USE YET, EXPECT BUGS, CRASHES, ETC.</span>',
+            button: {
+                text: "OK",
+                visible: true,
+                className: "confirm-button",
+                closeModal: true,
+            }
+        });
+    
+        const confirmButton = document.querySelector('.sweet-alert .confirm');
+        confirmButton.disabled = true;
+        confirmButton.style.cursor = 'not-allowed';
+        confirmButton.style.opacity = '0.5';
+    
+        let remainingTime = 10;
+        const interval = setInterval(() => {
+            remainingTime--;
+    
+            if (remainingTime <= 0) {
+                clearInterval(interval);
+                confirmButton.disabled = false;
+                confirmButton.style.cursor = 'pointer';
+                confirmButton.style.opacity = '1';
+            }
+        }, 1000);
+    }
+
+    function scrollLogToBottom() {
+        logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    const logContainer = document.getElementById("log-container");
+
+    function redirectToSite() {
+        const inputElement = document.getElementById('nameInput');
+        const inputText = inputElement.value.trim();
+
+        if (inputText === "") {
+            const logEntry = document.createElement("div");
+            logEntry.className = "log-entry";
+            logEntry.style.color = "red"
+            logEntry.textContent = `[ Error ] Please Enter a name of the game you want multiplayer for.`;
+            logContainer.appendChild(logEntry);
+            scrollLogToBottom();
+            return;
+        }
+
+        const encodedText = encodeURIComponent(inputText);
+        const baseURL = "https://uploads.online-fix.me:2053/uploads/";
+        const suffix = "/Fix%20Repair/";
+        const newURL = `${baseURL}${encodedText}${suffix}`;
+
+        window.open(newURL, '_blank');
+    }
+
+    document.getElementById('nameInput').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            redirectToSite();
+        }
+    });
+</script>
+
+</body>
+</html>
