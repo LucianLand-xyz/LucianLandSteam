@@ -1,14 +1,94 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/sweetalert.min.css">
-    <script src="js/sweetalert.min.js"></script>
-    <script async="" src="js/adsbygoogle.js" crossorigin="anonymous"></script>
-    <title>LucianLand - Steam</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
+    <title>Recreated Layout with Larger Images</title>
     <style>
+        body {
+    background-color: #121212; /* Dark background color */
+    color: #ffffff; /* Light text color */
+    font-family: "Poppins", sans-serif;
+    margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+}
+     
+        .container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .box {
+            border: 1px solid #000;
+            padding: 20px;
+            text-align: center;
+            width: 400px;
+            position: relative;
+        }
+        .box img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #ddd;
+            text-align: center;
+            line-height: 200px;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .circle img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .footer .dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .footer .dots button {
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+        }
+        .footer .dots img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        /* Adding connecting lines */
+        .line {
+            position: absolute;
+            background: black;
+        }
+        .line1 {
+            width: 2px;
+            height: 100px;
+            top: 360px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .line2 {
+            width: 100px;
+            height: 2px;
+            top: 460px;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
         .log-container {
             margin-top: 20px;
             padding: 10px;
@@ -98,6 +178,10 @@
             scrollbar-width: thin;
             scrollbar-color: #5a5a5a #2c2c2c;
         }
+        h4 {
+            align-items: center;
+
+        }
          @keyframes typewriter {
             from {
                 width: 0;
@@ -106,259 +190,137 @@
                 width: 31.5em;
             }
         }
+        .start-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .start-screen button {
+            padding: 15px 30px;
+            background: #28a745;
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .start-screen button:hover {
+            background: #218838;
+        }
+        .music-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #5a5a5a;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
-<header>
-    <nav>
-     
-        <div class="header_links">
-            <ul class="nav_links">
-                <li class="nav_link"><a href="https://lucianland.xyz/index.html">Home</a></li>
-                <li class="nav_link"><a href="https://lucianland.xyz/qna.html">Q&A</a></li>
-                <li class="nav_link"><a href="https://www.steamtools.net/res/ev/SteamtoolsSetup.exe">Download</a></li>
-                <li class="nav_link"><a href="https://lucianland.xyz/onlinefix.html">Multiplayer fix</a></li>
 
 
-            </ul>
-        </div> 
-    </nav>
-</header>
-<section class="main">
-    <span>Manifest &amp; Lua Generator Made By Lucian</span>
-    <p>Any bugs? questions? Don't forget to read the information below.</p>
-    <div style="margin-top: 20px; display: flex">
-        <input type="text" placeholder="Enter your APP ID / URL here." class="custom-input" style="padding: 10px; border: 1px solid transparent; border-radius: 5px; font-size: 16px; width: 65%; box-sizing: border-box; margin-right: 10px;">
-        <button id="submit-button" class="custom-button" style="padding: 10px 20px; border: none; color: white; border-radius: 5px; width: 30%;" onclick="handleInput()">Submit</button>
+    <div class="container" id="main-content">
+        <div class="box" id="main-content">
+            <img src="images/manifestproject.png" alt="Placeholder Image">
+            <h2>Manifest + Online Fix</h2>
+            <a class="custom-button" style="padding: 10px 20px; border: none; color: white; border-radius: 5px; width: 30%;" href="Manifest Project/home.html">Load</a>
+        </div>
+        <div class="box" id="main-content">
+            <img src="images/image.png" alt="Lucian.Top Image">
+            <h2>Lucian.Top</h2>
+            <a class="custom-button" style="padding: 10px 20px; border: none; color: white; border-radius: 5px; width: 30%; align-items: center;" href="https://lucian.top">Load</a>
+        </div>
     </div>
-    <div id="log-container" class="log-container"></div>
-    <div style="margin-top: 20px; text-align: center; color: #ffffff;">
-        Need DLC? Achievement? No online? Check out <a href="https://lucianland.xyz/qna.html" style="color: #007bff; text-decoration: underline;">Q&A!</a>
+    <div class="circle" id="main-content">
+        <img src="https://cdn.discordapp.com/avatars/1179523047846334559/fd5c75cf592a70fe73655f06b0b4db42.webp?size=80" alt="Circle Image">
     </div>
-    
-</section>
+    <div class="footer" id="main-content">
+        <h3>Hi, Im Lucian :) The creator of this website and its projects, i mostly made the gorilla tag unity copys a thing and i quitted making copies a LONG time ago. I Know c#, c++, and javascript. CHRISTMAS :DDD</h3>
+        <button class="music-button" style="padding: 10px 20px; border: none; color: white; border-radius: 5px; width: 30%;" id="music-button">Toggle Music</button>
+        <div class="dots">
+            <a href="https://discord.gg/polarsunityhub" >
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSq4oUWlyAMtO4Gq2Hbiya_64BQYToeWoL5Q&s" alt="discord">
+            </a>
+            <a href="https://www.youtube.com/@lucianthedev" >
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwX0s0adw2u0QowIZbamUhIyVVaPb339eBA&s" alt="youtube">
+            </a>
+            <a href="https://github.com/LucianLand-xyz/LucianLandSteam" >
+                <img src="https://w7.pngwing.com/pngs/646/324/png-transparent-github-computer-icons-github-logo-monochrome-head-thumbnail.png" alt="youtube">
+            </a>
+   
+        </div>
+    </div>
+</body>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const cooldownTime = 20;
-        let processing = false;
-    
-        window.setCookie = function (name, value, seconds) {
-            const d = new Date();
-            d.setTime(d.getTime() + (seconds * 1000));
-            const expires = "expires=" + d.toUTCString();
-            document.cookie = name + "=" + value + ";" + expires + ";path=/";
-        };
-    
-        window.getCookie = function (name) {
-            const cname = name + "=";
-            const decodedCookie = decodeURIComponent(document.cookie);
-            const ca = decodedCookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(cname) === 0) {
-                    return c.substring(cname.length, c.length);
-                }
-            }
-            return "";
-        };
-    
-        const submitButton = document.getElementById("submit-button");
-        const logContainer = document.getElementById("log-container");
-    
-        const swalCooldown = 5;
-    
-        function showSwal() {
-            swal({
-                title: 'NEWS',
-                html: true,
-                text: '<strong style="color: green;">V1.5 Changelogs!</strong><br><br>' +
-                    '<p style="color: white;"> - Added Online-Fix Support/Built in.' +
-                    '<p style="color: white"> - Fixed site, it will most likly break sometime soon so expect that lol.' +
-                    '<p style="color: red;">Note:</p><br>' +
-                    
-                    '<p style="color: white;">Not really known and i just want to make this small project <3. HUGE credits to vinny for this idea. Thanks @reallucian.</p>',
-                button: {
-                    text: "OK",
-                    visible: true,
-                    className: "confirm-button",
-                    closeModal: true,
-                }
-            });
-    
-            const confirmButton = document.querySelector('.sweet-alert .confirm');
-            confirmButton.disabled = true;
-            confirmButton.style.cursor = 'not-allowed';
-            confirmButton.style.opacity = '0.5';
-    
-            let remainingTime = swalCooldown;
-            const interval = setInterval(() => {
-                remainingTime--;
-    
-                if (remainingTime <= 0) {
-                    clearInterval(interval);
-                    confirmButton.disabled = false;
-                    confirmButton.style.cursor = 'pointer';
-                    confirmButton.style.opacity = '1';
-                }
-            }, 1000);
-        }
-    
-        function startCooldown() {
-            const now = Math.floor(Date.now() / 1000);
-            const cooldownEnd = now + cooldownTime;
-            setCookie("cooldownEnd", cooldownEnd, cooldownTime);
-    
-            updateButtonState(cooldownEnd);
-        }
-    
-        function updateButtonState(cooldownEnd) {
-            const now = Math.floor(Date.now() / 1000);
-            const remainingTime = cooldownEnd - now;
-    
-            if (remainingTime > 0) {
-                submitButton.disabled = true;
-                submitButton.textContent = `Wait ${remainingTime}s`;
-    
-                const interval = setInterval(() => {
-                    const now = Math.floor(Date.now() / 1000);
-                    const timeLeft = cooldownEnd - now;
-    
-                    if (timeLeft > 0) {
-                        submitButton.textContent = `Wait ${timeLeft}s`;
-                    } else {
-                        clearInterval(interval);
-                        submitButton.disabled = false;
-                        submitButton.textContent = "Submit";
-                        document.cookie = "cooldownEnd=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                    }
-                }, 1000);
-            } else {
-                submitButton.disabled = false;
-                submitButton.textContent = "Submit";
-            }
-        }
-    
-        function handleCooldown() {
-            const cooldownEnd = getCookie("cooldownEnd");
-            if (cooldownEnd) {
-                updateButtonState(parseInt(cooldownEnd, 10));
-            }
-        }
-    
-        function saveLogToLocalStorage() {
-            const logEntries = [];
-            const logItems = logContainer.querySelectorAll(".log-entry");
-            logItems.forEach(entry => {
-                logEntries.push(entry.textContent);
-            });
-            localStorage.setItem("logHistory", JSON.stringify(logEntries));
-        }
-    
-        function loadLogFromLocalStorage() {
-            const savedLogs = localStorage.getItem("logHistory");
-            if (savedLogs) {
-                const logEntries = JSON.parse(savedLogs);
-                logEntries.forEach(entryText => {
-                    const logEntry = document.createElement("div");
-                    logEntry.className = "log-entry";
-                    logEntry.textContent = entryText;
-                    logContainer.appendChild(logEntry);
-                });
-            }
-        }
-    
-        async function handleInput() {
-            if (processing) return; // Prevent double requests
-            processing = true;
-    
-            const input = document.querySelector(".custom-input").value.trim();
-    
-            function extractAppId(input) {
-                if (/^\d+$/.test(input)) {
-                    return input;
-                }
-                const urlPattern = /(?:app\/|agecheck\/app\/)(\d+)/;
-                const match = input.match(urlPattern);
-                return match ? match[1] : null;
-            }
-    
-            function getCurrentTimestamp() {
-                const now = new Date();
-                return now.toLocaleString();
-            }
-    
-            const appId = extractAppId(input);
-    
-            if (!appId) {
-                const errorEntry = document.createElement("div");
-                errorEntry.className = "log-entry";
-                errorEntry.textContent = `${getCurrentTimestamp()} [ Error ] Invalid URL or APP ID.`;
-                logContainer.appendChild(errorEntry);
-                saveLogToLocalStorage();
-                scrollLogToBottom();
-                processing = false;
-                return;
-            }
-    
-            const logEntry = document.createElement("div");
-            logEntry.className = "log-entry";
-            logEntry.style.color = "green"
-            logEntry.textContent = `${getCurrentTimestamp()} [ Information ] Finding APP IDe: ${appId}`;
-            logContainer.appendChild(logEntry);
-            saveLogToLocalStorage();
-            scrollLogToBottom();
-    
-            try {
-                const response = await fetch(`https://www.vinoland.net/get-appid?appId=${appId}`);
-                const result = await response.text();
-                const resultEntry = document.createElement("div");
-                resultEntry.className = "log-entry";
-                resultEntry.textContent = `${getCurrentTimestamp()} [ Result ] ${result}`;
-                logContainer.appendChild(resultEntry);
-                saveLogToLocalStorage();
-                scrollLogToBottom();
-    
-                if (result.startsWith("Successfully generated APP ID: ")) {
-                    const branchName = result.replace("Successfully generated APP IDe: ", "").trim();
-                    const downloadResponse = await fetch(`https://www.vinoland.net/download?appId=${branchName}`);
-                    const downloadData = await downloadResponse.json();
-                    const downloadUrl = downloadData.url;
-                    const a = document.createElement("a");
-                    a.href = downloadUrl;
-                    a.download = `${branchName}.zip`;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                }
-            } catch (error) {
-                const errorEntry = document.createElement("div");
-                errorEntry.className = "log-entry";
-                errorEntry.textContent = `${getCurrentTimestamp()} [ Error ] Unable to find a file hoster url. Please Try again.`;
-                logContainer.appendChild(errorEntry);
-                saveLogToLocalStorage();
-                scrollLogToBottom();
-            } finally {
-                processing = false;
-            }
-        }
-    
-        function scrollLogToBottom() {
-            logContainer.scrollTop = logContainer.scrollHeight;
-        }
-    
-        submitButton.addEventListener("click", () => {
-            handleInput();
-            startCooldown();
+    // make it more custom lucian :( - james
+    const backgroundMusic = new Audio('song.mp3');
+        backgroundMusic.loop = true;
+        backgroundMusic.muted = false;  // Start muted to avoid autoplay restrictions
+
+        window.addEventListener('load', () => {
+            backgroundMusic.muted = false;
         });
-    
-        handleCooldown();
-        showSwal();
-    });
-    </script>
-    
 
+        // Toggle music play/pause function
+        function toggleMusic() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+            } else {
+                backgroundMusic.pause();
+            }
+        }
 
-</body></html>
+        document.getElementById('music-button').addEventListener('click', toggleMusic);
+
+        function createSnowflakes() {
+            const numSnowflakes = 100;  
+            const snowflakeContainer = document.body;
+
+            for (let i = 0; i < numSnowflakes; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.textContent = '❄️';
+
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;  
+                snowflake.style.fontSize = `${Math.random() * 20 + 10}px`; 
+
+                snowflakeContainer.appendChild(snowflake);
+            }
+        }
+
+        // Initialize snowflakes
+        createSnowflakes();
+
+</script>
+</html>
