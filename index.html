@@ -155,6 +155,24 @@ body.dark-mode {
    background-color: #111;
    color: #fff;
 }
+
+.snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
       </style>
       <script>
          window.RufflePlayer = window.RufflePlayer || {};
@@ -190,4 +208,47 @@ body.dark-mode {
          <script src="assets/js/disable_inspect.js"></script>
       </div>
    </body>
+
+   <script>
+    // make it more custom lucian :( - james
+    const backgroundMusic = new Audio('song.mp3');
+        backgroundMusic.loop = true;
+        backgroundMusic.muted = false;  // Start muted to avoid autoplay restrictions
+
+        window.addEventListener('load', () => {
+            backgroundMusic.muted = false;
+        });
+
+        // Toggle music play/pause function
+        function toggleMusic() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+            } else {
+                backgroundMusic.pause();
+            }
+        }
+
+        document.getElementById('music-button').addEventListener('click', toggleMusic);
+
+        function createSnowflakes() {
+            const numSnowflakes = 100;  
+            const snowflakeContainer = document.body;
+
+            for (let i = 0; i < numSnowflakes; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.textContent = '❄️';
+
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;  
+                snowflake.style.fontSize = `${Math.random() * 20 + 10}px`; 
+
+                snowflakeContainer.appendChild(snowflake);
+            }
+        }
+
+        // Initialize snowflakes
+        createSnowflakes();
+
+</script>
 </html>
